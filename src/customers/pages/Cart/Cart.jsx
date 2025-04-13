@@ -123,37 +123,6 @@ const Cart = () => {
     }
   };
 
-  const handleSubmit2 = (values, { resetForm }) => {
-    console.log("cart.items = ", cart.cartitems);
-
-    if (!cart.cartitems || cart.cartitems.length === 0) {
-      console.error("Cart is empty or not loaded");
-      setOpenSnakbar(true);
-      return;
-    }
-  
-    const data = {
-      jwt: localStorage.getItem("jwt"),
-      order: {
-        restaurantId: cart.items[0]?.food?.restaurant?._id,
-        cartItems: cart.items,
-        deliveryAddress: {
-          fullName: auth.user?.fullName,
-          streetAddress: values.streetAddress,
-          city: values.city,
-          state: values.state,
-          postalCode: values.pincode,
-          country: "India",
-        },
-      },
-    };
-  
-    dispatch(createOrder(data));
-  };
-  
-  
-  
-
   const createOrderUsingSelectedAddress = (deliveryAddress) => {
     const data = {
       jwt: localStorage.getItem("jwt"),
@@ -169,7 +138,7 @@ const Cart = () => {
 
   const handleCloseSankBar = () => setOpenSnakbar(false);
 
-  console.log("auth.user.addresses", auth.user?.addresses);
+  
 
 
   return (
