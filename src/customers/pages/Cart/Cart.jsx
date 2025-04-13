@@ -122,6 +122,29 @@ const Cart = () => {
       setOpenSnakbar(true);
     }
   };
+
+  const handleSubmit3 = (values, { resetForm }) => {
+    const data = {
+      jwt: localStorage.getItem("jwt"),
+      order: {
+        restaurantId: cart.items[0].food?.restaurant._id,
+        cartItems: cart.items, 
+        deliveryAddress: {
+          fullName: auth.user?.fullName,
+          streetAddress: values.streetAddress,
+          city: values.city,
+          state: values.state,
+          postalCode: values.pincode,
+          country: "India",
+        },
+      },
+    };
+  
+    if (isValid(cart.items)) {
+      dispatch(createOrder(data));
+    } else setOpenSnakbar(true);
+  };
+  
   
 
   const createOrderUsingSelectedAddress = (deliveryAddress) => {
@@ -261,7 +284,7 @@ const Cart = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit1}
+            onSubmit={handleSubmit3}
           >
             <Form>
               <Grid container spacing={2}>
