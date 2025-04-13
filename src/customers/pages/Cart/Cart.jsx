@@ -124,9 +124,9 @@ const Cart = () => {
   };
 
   const handleSubmit2 = (values, { resetForm }) => {
-    console.log("cart.items = ", cart.items);
+    console.log("cart.items = ", cart.cartitems);
 
-    if (!cart.items || cart.items.length === 0) {
+    if (!cart.cartitems || cart.cartitems.length === 0) {
       console.error("Cart is empty or not loaded");
       setOpenSnakbar(true);
       return;
