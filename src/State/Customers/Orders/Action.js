@@ -7,6 +7,7 @@ export const createOrder = (reqData) => {
   return async (dispatch) => {
     dispatch(createOrderRequest());
     try {
+      console.log("reqData.order", reqData.order);
       const {data} = await api.post('/api/order', reqData.order,{
         headers: {
             Authorization: `Bearer ${reqData.jwt}`,
@@ -18,7 +19,14 @@ export const createOrder = (reqData) => {
       console.log("created order data",data)
       dispatch(createOrderSuccess(data));
     } catch (error) {
-      console.log("error ",error)
+      if (error.response) {
+        console.error("Error Status:", error.response.status);
+        console.error("Error Data:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Axios setup error:", error.message);
+      }  
       dispatch(createOrderFailure(error));
     }
   };

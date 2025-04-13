@@ -60,6 +60,7 @@ const Cart = () => {
   }, []);
 
   const handleSubmit = (values, { resetForm }) => {
+    console.log("restaurantId", cart.cartItems[0]?.food?.restaurant?._id);
     const data = {
       jwt: localStorage.getItem("jwt"),
       order: {
