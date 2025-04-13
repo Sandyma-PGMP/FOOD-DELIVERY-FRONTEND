@@ -291,7 +291,7 @@ const Cart = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit2}
+            onSubmit={handleSubmit1}
           >
             <Form>
               <Grid container spacing={2}>
