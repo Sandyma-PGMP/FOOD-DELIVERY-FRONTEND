@@ -81,6 +81,49 @@ const Cart = () => {
     } else setOpenSnakbar(true);
   };
 
+  const handleSubmit1 = (values, { resetForm }) => {
+    const cartItems = cart.cartItems;
+  
+    // Check if cart is valid and has restaurant info
+    if (
+      !cartItems.length ||
+      !cartItems[0]?.food?.restaurant?._id
+    ) {
+      console.error("Cart is empty or restaurant information is missing.");
+      setOpenSnakbar(true);
+      return;
+    }
+  
+    const restaurantId = cartItems[0].food.restaurant._id;
+  
+    const data = {
+      jwt: localStorage.getItem("jwt"),
+      order: {
+        restaurantId,
+        deliveryAddress: {
+          fullName: auth.user?.fullName,
+          streetAddress: values.streetAddress,
+          city: values.city,
+          state: values.state,
+          postalCode: values.pincode,
+          country: "India",
+        },
+      },
+    };
+  
+    console.log("Submitting order data:", data);
+  
+    // Check if order is valid before dispatch
+    if (isValid(cartItems)) {
+      dispatch(createOrder(data));
+      resetForm(); // optional: reset form after successful submission
+      setOpenAddressModal(false); // optional: close modal on success
+    } else {
+      setOpenSnakbar(true);
+    }
+  };
+  
+
   const createOrderUsingSelectedAddress = (deliveryAddress) => {
     const data = {
       jwt: localStorage.getItem("jwt"),
@@ -218,7 +261,7 @@ const Cart = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit1}
           >
             <Form>
               <Grid container spacing={2}>
