@@ -123,12 +123,20 @@ const Cart = () => {
     }
   };
 
-  const handleSubmit3 = (values, { resetForm }) => {
+  const handleSubmit2 = (values, { resetForm }) => {
+    console.log("cart.items = ", cart.items);
+
+    if (!cart.items || cart.items.length === 0) {
+      console.error("Cart is empty or not loaded");
+      setOpenSnakbar(true);
+      return;
+    }
+  
     const data = {
       jwt: localStorage.getItem("jwt"),
       order: {
-        restaurantId: cart.items[0].food?.restaurant._id,
-        cartItems: cart.items, 
+        restaurantId: cart.items[0]?.food?.restaurant?._id,
+        cartItems: cart.items,
         deliveryAddress: {
           fullName: auth.user?.fullName,
           streetAddress: values.streetAddress,
@@ -140,10 +148,9 @@ const Cart = () => {
       },
     };
   
-    if (isValid(cart.items)) {
-      dispatch(createOrder(data));
-    } else setOpenSnakbar(true);
+    dispatch(createOrder(data));
   };
+  
   
   
 
@@ -284,7 +291,7 @@ const Cart = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit3}
+            onSubmit={handleSubmit2}
           >
             <Form>
               <Grid container spacing={2}>
