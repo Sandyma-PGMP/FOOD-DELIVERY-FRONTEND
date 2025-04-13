@@ -18,6 +18,12 @@ export const createOrder = (reqData) => {
       }
       console.log("created order data",data)
       dispatch(createOrderSuccess(data));
+      if (data.payment_url && data.payment_url !== "null") {
+        window.location.href = data.payment_url;
+      } else {
+        console.warn("No valid payment URL returned:", data.payment_url);
+      }
+      
     } catch (error) {
       if (error.response) {
         console.error("Error Status:", error.response.status);
