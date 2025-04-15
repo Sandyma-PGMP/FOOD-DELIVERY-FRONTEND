@@ -22,7 +22,7 @@ const HomePage = () => {
     <div className="">
       <section className="-z-50 banner relative flex flex-col justify-center items-center">
         <div className="w-[50vw] z-10 text-center">
-          <p className="text-2xl lg:text-7xl font-bold z-10 py-5">Swiggy</p>
+          <p className="text-2xl text-gray-300 lg:text-7xl font-bold z-10 py-5">FOODIE</p>
           <p className="z-10   text-gray-300 text-xl lg:text-4xl">
             Taste the Convenience: Food, Fast and Delivered.
           </p>
@@ -35,7 +35,7 @@ const HomePage = () => {
       <section className="p-10 lg:py-10 lg:px-20">
         <div className="">
           <p className="text-2xl font-semibold text-gray-400 py-3 pb-10">
-            Top Meels
+            Top Meals
           </p>
           <MultipleItemsCarousel />
         </div>

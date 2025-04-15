@@ -4,7 +4,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark", // This sets the theme to dark mode
     primary: {
-      main: "#e91e63", // Customize the primary color to your preference
+      main: "#cb202d", // Customize the primary color to your preference
     },
     secondary: {
       main: "#5A20CB", // Customize the secondary color to your preference
@@ -18,7 +18,7 @@ const darkTheme = createTheme({
       paper: "#0D0D0D",
     },
     textColor: {
-      main: "#111111",
+      main: " #f4f4f2",
     },
   },
 });

@@ -8,11 +8,11 @@ export const ingredients=[
         ingredientName:"red Bread"
     },
     {
-        ingredientCategory:"souce",
-        ingredientName:"tomato souce"
+        ingredientCategory:"sauce",
+        ingredientName:"tomato sauce"
     },
     {
-        ingredientCategory:"souce",
-        ingredientName:"onion souce"
+        ingredientCategory:"sauce",
+        ingredientName:"onion sauce"
     }
 ]

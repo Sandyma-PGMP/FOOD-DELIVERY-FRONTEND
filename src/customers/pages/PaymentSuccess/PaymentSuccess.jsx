@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
             Thank you for choosing our restaurant! We appreciate your order.
           </p>
           <p className="py-2 text-center text-gray-200 text-lg">
-            Have A Grate Day !
+            Have A Great Day !
           </p>
           <Button
             variant="contained"

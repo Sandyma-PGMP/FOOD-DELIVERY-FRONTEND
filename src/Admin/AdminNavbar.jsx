@@ -26,8 +26,8 @@ const AdminNavbar = ({handleOpenSideBar}) => {
           className="lg:mr-10 cursor-pointer flex items-center space-x-4"
         >
           <IconButton onClick={handleOpenSideBar}><MenuIcon/></IconButton>
-          <li className="logo font-semibold text-gray-300 text-2xl">
-            Zosh Food
+          <li className="logo font-semibold text-gray-300 text-4xl">
+            FOODIE
           </li>
         </div>
         {/* <li className="font font-semibold">Home</li> */}
