@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = "http://localhost:3000";
+export const API_URL = "https://food-delivery-backend-9f2i.onrender.com";
 
 
 export const api = axios.create({
