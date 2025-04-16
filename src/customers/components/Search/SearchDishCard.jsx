@@ -23,7 +23,17 @@ const SearchDishCard = ({item}) => {
     <Card className=" m-3">
       <CardHeader className="text-sm"
         action={
-          <IconButton onClick={()=>navigate(`/restaurant/${item.restaurant.address.city}/${item.restaurant.name}/${item.restaurant.id}`)} aria-label="settings">
+          <IconButton onClick={() => {
+            const rest = item?.restaurant;
+            const addr = rest?.address;
+        
+            if (addr?.city && rest?.name && rest?._id) {
+              navigate(`/restaurant/${addr.city}/${rest.name}/${rest._id}`);
+            } else {
+              console.warn("Incomplete restaurant data", item);
+            }
+          }}
+           aria-label="settings">
             <EastIcon />
           </IconButton>
         }
@@ -47,7 +57,6 @@ const SearchDishCard = ({item}) => {
               src={item.images[0]}
               alt=""
             />
-            <Button onClick={handleAddItemToCart} size="small">Add</Button>
           </div>
         </div>
       </div>

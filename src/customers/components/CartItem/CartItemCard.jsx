@@ -26,6 +26,7 @@ const CartItemCard = ({ item }) => {
     dispatch(removeCartItem({cartItemId:item._id,jwt:auth.jwt || jwt}))
     
   }
+  console.log("item",item)
   return (
     <div className="px-5">
       <div className="lg:flex items-center lg:space-x-5">
