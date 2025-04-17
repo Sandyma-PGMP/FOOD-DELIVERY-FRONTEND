@@ -115,7 +115,9 @@ export const addToFavorites = ({restaurantId,jwt}) => {
 export const resetPasswordRequest = (email) => async (dispatch) => {
   dispatch({type:REQUEST_RESET_PASSWORD_REQUEST});
   try {
-    const {data} = await axios.post(`${API_URL}/auth/reset-password-request?email=${email}`,{});
+    const { data } = await axios.post(`${API_URL}/auth/reset-password-request`, {
+      email, 
+    });
     
     console.log("reset password -: ", data);
    
